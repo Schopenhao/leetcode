@@ -14,26 +14,20 @@ function effect_bracket($para)
 	$para  = str_replace('"','',$para);//去除引号
 	$para  = str_split($para);//转数组
 	$count = count($para);
-	$half  = $count / 2;
-	$bracket_arr = array('('=>')','['=>']','{'=>'}');//限定范围
-	
 	//判断参数合法性
 	if($count % 2 > 0){
 		die('false');
 	}
-
+	$half  = $count / 2;
+	$bracket_arr = array('('=>')','['=>']','{'=>'}');//限定范围
 	for($i=0;$i<$half;$i++){
-		
 		if(!isset($bracket_arr[$para[$i]])){//不在范围内
 			die('false');
 		}
-		
 		if($bracket_arr[$para[$i]] != $para[$count-$i-1]){//首尾是否对应
 			die('false');
 		}
-		
 	}
-	
 	die('true');
 }
 
